@@ -1,0 +1,46 @@
+﻿<Page x:Class="GitUsers_MasterDetail.UserMasterPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      xmlns:local="clr-namespace:GitUsers_MasterDetail"
+      DataContext="{Binding Source={StaticResource Locator}, Path=MasterPageViewModel}"
+      mc:Ignorable="d"
+      d:DesignHeight="300" d:DesignWidth="330"
+      Title="UserMasterPage">
+
+    <Page.Resources>
+        <DataTemplate x:Key="ListDataTemplate">
+            <Border BorderThickness="1" 
+                    Padding="2" 
+                    HorizontalAlignment="Stretch" 
+                    CornerRadius="5" 
+                    Margin="5,0,0,0">
+
+                <StackPanel Orientation="Vertical" Width="297">
+                    <StackPanel Margin="0" Orientation="Horizontal">
+                        <TextBlock TextWrapping="Wrap" Text="User Id:" FontWeight="Normal" FontSize="16"/>
+                        <TextBlock Margin="15,0,0,0" Text="{Binding Id}" FontSize="14" FontWeight="Normal" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0" Height="27">
+                        <TextBlock Text="User name: " Height="27" FontWeight="Normal" FontSize="16"/>
+                        <TextBlock Text="{Binding Login}" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" Margin="16,0,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid>
+        <ListBox x:Name="ListBoxUsers" SelectedItem="{Binding SelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{StaticResource ListDataTemplate}" ItemsSource="{Binding Users}" Margin="0,32,0,0">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding ShowDetail}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ListBox>
+        <TextBlock Text="User list" VerticalAlignment="Top" FontSize="20" HorizontalAlignment="Center" Margin="102,0"/>
+
+    </Grid>
+</Page>

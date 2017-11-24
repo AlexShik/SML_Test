@@ -1,0 +1,32 @@
+﻿<Page x:Class="GitUsers_MasterDetail.UserDetailPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      xmlns:local="clr-namespace:GitUsers_MasterDetail"
+      DataContext="{Binding Source={StaticResource Locator}, Path=DetailPageViewModel}"
+      
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="UserDetailPage">
+    <!--DataContext="{Binding Source={StaticResource Locator}, Path=UserDetailsPageViewModel}"-->
+    <Grid>
+        <Image HorizontalAlignment="Left" Height="75" Margin="10,44,0,0" Source="{Binding CurrentUser.avatar_url}" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.507"/>
+        <TextBlock Text="User Detail" VerticalAlignment="Top" FontSize="20" HorizontalAlignment="Center" Margin="102,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="102,67,-49,0" TextWrapping="Wrap" Text="{Binding CurrentUser.Name}" VerticalAlignment="Top" RenderTransformOrigin="-0.559,-0.632" Height="22" Width="247" FontSize="14" FontWeight="Bold"/>
+        <StackPanel Margin="39,170,102,108" Orientation="Horizontal">
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="created at:" VerticalAlignment="Top" FontStyle="Italic"/>
+            <TextBlock HorizontalAlignment="Left" Margin="20,0,0,0" TextWrapping="Wrap" Text="{Binding CurrentUser.created_at}" VerticalAlignment="Top"/>
+        </StackPanel>
+        <TextBlock HorizontalAlignment="Left" Margin="102,44,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top" FontStyle="Italic" RenderTransformOrigin="0.553,0.413" Height="18"/>
+        <StackPanel Margin="39,135,170,149" Orientation="Horizontal">
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="email:" VerticalAlignment="Top" FontStyle="Italic" Width="34"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding CurrentUser.Email}" VerticalAlignment="Top" RenderTransformOrigin="3.932,1.29" Margin="20,0,0,0"/>
+        </StackPanel>
+        <StackPanel Margin="39,205,155,64" Orientation="Horizontal">
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="location:" VerticalAlignment="Top" FontStyle="Italic"/>
+            <TextBlock HorizontalAlignment="Left" Margin="20,0,0,0" TextWrapping="Wrap" Text="{Binding CurrentUser.location}" VerticalAlignment="Top"/>
+        </StackPanel>
+    </Grid>
+</Page>
